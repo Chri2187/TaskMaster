@@ -1,13 +1,29 @@
-version: '3'
+version: '3.8'
 
 services:
   checklist-app:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: checklist-app
     ports:
       - "3005:3005"
     environment:
       - NODE_ENV=production
       - PORT=3005
     restart: unless-stopped
+    volumes:
+      # Uncomment the following line to enable local storage persistence
+      # - ./data:/app/data
+      - /app/node_modules
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3005/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
