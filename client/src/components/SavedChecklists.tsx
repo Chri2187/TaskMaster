@@ -18,27 +18,30 @@ export default function SavedChecklists({
   return (
     <Card className="bg-card rounded-lg p-6 shadow-lg border border-border mt-8">
       <CardContent className="p-0">
-        <h2 className="text-xl font-medium mb-4 text-secondary">Saved Checklists</h2>
-        
+        <h2 className="text-xl font-medium mb-4 text-secondary">Salvate</h2>
+
         <div className="space-y-2">
           {checklists.length === 0 ? (
-            <div className="py-3 text-center text-secondary/60 italic">
-              No saved checklists. Create and save your first checklist above.
-            </div>
+            <div className="py-3 text-center text-secondary/60 italic"></div>
           ) : (
             checklists.map((checklist, index) => {
               const totalItems = checklist.items.length;
-              const completedItems = checklist.items.filter(item => item.completed).length;
-              
+              const completedItems = checklist.items.filter(
+                (item) => item.completed
+              ).length;
+
               return (
                 <div
                   key={checklist.id}
                   className="flex items-center justify-between p-3 rounded-md hover:bg-background/50 transition-colors"
                 >
                   <div>
-                    <h3 className="font-medium text-secondary">{checklist.title}</h3>
+                    <h3 className="font-medium text-secondary">
+                      {checklist.title}
+                    </h3>
                     <p className="text-sm text-secondary/70">
-                      {totalItems} items ({completedItems} completed) • {
+                      {totalItems} items ({completedItems} completed) •{" "}
+                      {
                         // Format date directly here
                         new Date(checklist.lastModified).toLocaleString()
                       }

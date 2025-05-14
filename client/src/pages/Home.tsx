@@ -121,9 +121,9 @@ export default function Home() {
             <CheckSquare className="text-accent" />
             <span>Checklist App</span>
           </h1>
-          <p className="text-secondary/80 mt-2">
+          {/* <p className="text-secondary/80 mt-2">
             Create, manage, and export your checklists
-          </p>
+          </p> */}
         </header>
 
         {/* Main Content */}

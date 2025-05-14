@@ -4,7 +4,7 @@
 
 :root {
   /* Base colors from palette: primary 083D77, secondary EBEBD3, third F4D35E */
-  --background: 210 82% 25%; /* 083D77 - primary */
+  --background: 210 82% 12%; /* 083D77 - primary */
   --foreground: 60 25% 87%; /* EBEBD3 - secondary */
   --muted: 60 25% 80%;
   --muted-foreground: 60 25% 60%;

@@ -61,11 +61,15 @@ app.use((req, res, next) => {
   const port = process.env.PORT ? parseInt(process.env.PORT) : 
                process.env.NODE_ENV === 'production' ? 3005 : 5000;
   
-  server.listen({
-    port,
-    host: "0.0.0.0",
-    reusePort: true,
-  }, () => {
+  // server.listen({
+  //   port:3006,
+  //   host: "0.0.0.0",
+  //   reusePort: true,
+  // }, () => {
+  //   log(`serving on port ${port}`);
+  // });
+  app.listen(port, () => {
     log(`serving on port ${port}`);
-  });
+  }
+  );
 })();
