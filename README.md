@@ -13,6 +13,12 @@ Un'applicazione minimalista per gestire checklist con tema scuro ed esportazione
 
 ## Esecuzione dell'applicazione
 
+## Installazione dell'applicazione
+
+```bash
+npm install
+```
+
 ### Sviluppo locale
 
 ```bash
