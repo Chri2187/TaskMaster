@@ -23,20 +23,20 @@ export default function ChecklistForm({ onCreateChecklist }: ChecklistFormProps)
   };
 
   return (
-    <Card className="bg-dark-secondary rounded-lg p-6 shadow-lg mb-6 border border-dark-border">
+    <Card className="bg-card rounded-lg p-6 shadow-lg mb-6 border border-border">
       <CardContent className="p-0">
-        <h2 className="text-xl font-medium mb-4 text-white">Create New Checklist</h2>
+        <h2 className="text-xl font-medium mb-4 text-secondary">Create New Checklist</h2>
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Label htmlFor="checklist-title" className="block text-sm font-medium text-gray-300 mb-1">
+            <Label htmlFor="checklist-title" className="block text-sm font-medium text-secondary/90 mb-1">
               Checklist Title
             </Label>
             <Input
               id="checklist-title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 rounded-md bg-background border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
               placeholder="Enter checklist title"
               required
             />
@@ -45,7 +45,7 @@ export default function ChecklistForm({ onCreateChecklist }: ChecklistFormProps)
           <div className="flex justify-end">
             <Button 
               type="submit"
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+              className="px-4 py-2 bg-accent hover:bg-accent/80 rounded-md text-primary font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
             >
               Create Checklist
             </Button>

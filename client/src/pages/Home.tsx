@@ -99,15 +99,15 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-dark-primary">
+    <div className="min-h-screen bg-background text-foreground">
       <div className="container mx-auto px-4 py-8 max-w-3xl">
         {/* Header */}
         <header className="mb-8 text-center">
-          <h1 className="text-2xl md:text-3xl font-semibold text-white flex items-center justify-center gap-2">
-            <CheckSquare className="text-blue-500" />
+          <h1 className="text-2xl md:text-3xl font-semibold text-secondary flex items-center justify-center gap-2">
+            <CheckSquare className="text-accent" />
             <span>Checklist App</span>
           </h1>
-          <p className="text-gray-400 mt-2">
+          <p className="text-secondary/80 mt-2">
             Create, manage, and export your checklists
           </p>
         </header>
@@ -132,7 +132,7 @@ export default function Home() {
         </div>
 
         {/* Footer */}
-        <footer className="text-center text-gray-500 text-sm mt-8 pt-4 border-t border-gray-800">
+        <footer className="text-center text-secondary/70 text-sm mt-8 pt-4 border-t border-primary-foreground/20">
           <p>Checklist App - Dark Mode | {new Date().getFullYear()}</p>
         </footer>
       </div>

@@ -151,10 +151,10 @@ export default function ChecklistContainer({
   const progressPercentage = totalItems === 0 ? 0 : (completedItems / totalItems) * 100;
 
   return (
-    <Card className="bg-dark-secondary rounded-lg p-6 shadow-lg mb-6 border border-dark-border">
+    <Card className="bg-card rounded-lg p-6 shadow-lg mb-6 border border-border">
       <CardContent className="p-0">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
-          <h2 className="text-xl font-semibold text-white">
+          <h2 className="text-xl font-semibold text-secondary">
             {checklist.title}
           </h2>
           
@@ -162,7 +162,7 @@ export default function ChecklistContainer({
             <Button
               variant="secondary"
               size="sm"
-              className="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 rounded-md text-white text-sm flex items-center gap-1 transition-colors"
+              className="px-3 py-1.5 bg-background hover:bg-background/80 rounded-md text-secondary text-sm flex items-center gap-1 transition-colors"
               onClick={onSaveChecklist}
             >
               <Save className="h-4 w-4" />
@@ -172,7 +172,7 @@ export default function ChecklistContainer({
             <Button
               variant="secondary"
               size="sm"
-              className="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 rounded-md text-white text-sm flex items-center gap-1 transition-colors"
+              className="px-3 py-1.5 bg-background hover:bg-background/80 rounded-md text-secondary text-sm flex items-center gap-1 transition-colors"
               onClick={exportChecklist}
             >
               <Download className="h-4 w-4" />
@@ -181,7 +181,7 @@ export default function ChecklistContainer({
             
             <label
               htmlFor="load-checklist"
-              className="px-3 py-1.5 bg-gray-700 hover:bg-gray-600 rounded-md text-white text-sm flex items-center gap-1 cursor-pointer transition-colors"
+              className="px-3 py-1.5 bg-background hover:bg-background/80 rounded-md text-secondary text-sm flex items-center gap-1 cursor-pointer transition-colors"
             >
               <Upload className="h-4 w-4" />
               <span>Load</span>
@@ -197,7 +197,7 @@ export default function ChecklistContainer({
             <Button
               variant="destructive"
               size="sm"
-              className="px-3 py-1.5 bg-red-700 hover:bg-red-600 rounded-md text-white text-sm flex items-center gap-1 transition-colors"
+              className="px-3 py-1.5 bg-destructive hover:bg-destructive/80 rounded-md text-white text-sm flex items-center gap-1 transition-colors"
               onClick={clearChecklist}
             >
               <Trash2 className="h-4 w-4" />
@@ -212,12 +212,12 @@ export default function ChecklistContainer({
             value={newItem}
             onChange={(e) => setNewItem(e.target.value)}
             placeholder="Add new item"
-            className="flex-1 px-4 py-2 rounded-md bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 px-4 py-2 rounded-md bg-background border border-border text-foreground focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
             required
           />
           <Button
             type="submit"
-            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-4 py-2 bg-accent hover:bg-accent/80 rounded-md text-primary font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
           >
             Add
           </Button>
@@ -225,27 +225,29 @@ export default function ChecklistContainer({
         
         <div className="space-y-2">
           {checklist.items.length === 0 ? (
-            <div className="py-3 text-center text-gray-500 italic">
+            <div className="py-3 text-center text-secondary/60 italic">
               No items in this checklist. Add your first item above.
             </div>
           ) : (
             checklist.items.map((item, index) => (
               <div
                 key={index}
-                className={`flex items-center p-3 rounded-md hover:bg-gray-800 transition-colors ${
+                className={`flex items-center p-3 rounded-md hover:bg-background/50 transition-colors ${
                   item.completed ? "checklist-item completed" : "checklist-item"
                 }`}
               >
                 <Checkbox
                   checked={item.completed}
                   onCheckedChange={() => toggleItem(index)}
-                  className="w-5 h-5 rounded-md border-gray-600 text-blue-500 focus:ring-blue-500 focus:ring-offset-gray-900"
+                  className="w-5 h-5 rounded-md border-secondary/30 text-accent focus:ring-accent focus:ring-offset-background"
                 />
-                <span className="item-text ml-3 text-gray-200">{item.text}</span>
+                <span className={`item-text ml-3 text-secondary ${item.completed ? "line-through opacity-70" : ""}`}>
+                  {item.text}
+                </span>
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="ml-auto text-gray-400 hover:text-red-500 transition-colors"
+                  className="ml-auto text-secondary/60 hover:text-destructive transition-colors"
                   onClick={() => removeItem(index)}
                 >
                   <X className="h-4 w-4" />
@@ -255,14 +257,14 @@ export default function ChecklistContainer({
           )}
         </div>
         
-        <div className="mt-6 pt-4 border-t border-gray-700">
-          <div className="flex justify-between text-sm text-gray-400">
+        <div className="mt-6 pt-4 border-t border-border">
+          <div className="flex justify-between text-sm text-secondary/70">
             <span>Items: <span>{totalItems}</span></span>
             <span>Completed: <span>{completedItems}</span></span>
           </div>
           <Progress
             value={progressPercentage}
-            className="mt-2 bg-gray-800 rounded-full h-2.5 overflow-hidden"
+            className="mt-2 bg-background rounded-full h-2.5 overflow-hidden"
           />
         </div>
       </CardContent>
