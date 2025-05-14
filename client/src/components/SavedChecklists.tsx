@@ -14,6 +14,7 @@ export default function SavedChecklists({
   onLoadChecklist,
   onDeleteChecklist,
 }: SavedChecklistsProps) {
+  // No longer need the formatDate function as we're formatting inline
   return (
     <Card className="bg-card rounded-lg p-6 shadow-lg border border-border mt-8">
       <CardContent className="p-0">
@@ -37,7 +38,10 @@ export default function SavedChecklists({
                   <div>
                     <h3 className="font-medium text-secondary">{checklist.title}</h3>
                     <p className="text-sm text-secondary/70">
-                      {totalItems} items ({completedItems} completed) • {formatDate(checklist.lastModified)}
+                      {totalItems} items ({completedItems} completed) • {
+                        // Format date directly here
+                        new Date(checklist.lastModified).toLocaleString()
+                      }
                     </p>
                   </div>
                   <div className="flex gap-2">

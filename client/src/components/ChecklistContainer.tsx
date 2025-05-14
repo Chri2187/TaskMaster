@@ -88,7 +88,13 @@ export default function ChecklistContainer({
   };
 
   const exportChecklist = () => {
-    const checklistJson = JSON.stringify(checklist, null, 2);
+    // Make sure the lastModified field is in ISO timestamp format
+    const exportableChecklist = {
+      ...checklist,
+      lastModified: checklist.lastModified, // Already in ISO format, but making it explicit
+    };
+    
+    const checklistJson = JSON.stringify(exportableChecklist, null, 2);
     const blob = new Blob([checklistJson], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     
