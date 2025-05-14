@@ -17,7 +17,21 @@ export default function Home() {
     const saved = localStorage.getItem("savedChecklists");
     if (saved) {
       try {
-        setSavedChecklists(JSON.parse(saved));
+        // Parse saved checklists
+        const parsedChecklists = JSON.parse(saved);
+        
+        // Migrate any numeric lastModified values to ISO string format
+        const migratedChecklists = parsedChecklists.map((checklist: any) => {
+          if (typeof checklist.lastModified === 'number') {
+            return {
+              ...checklist,
+              lastModified: new Date(checklist.lastModified).toISOString()
+            };
+          }
+          return checklist;
+        });
+        
+        setSavedChecklists(migratedChecklists);
       } catch (error) {
         console.error("Error loading saved checklists:", error);
         localStorage.removeItem("savedChecklists");
@@ -35,7 +49,7 @@ export default function Home() {
       id: Date.now(),
       title,
       items: [],
-      lastModified: Date.now(),
+      lastModified: new Date().toISOString(),
     };
     setCurrentChecklist(newChecklist);
     toast({
@@ -49,7 +63,7 @@ export default function Home() {
 
     const checklistToSave = {
       ...currentChecklist,
-      lastModified: Date.now(),
+      lastModified: new Date().toISOString(),
     };
 
     const existingIndex = savedChecklists.findIndex(

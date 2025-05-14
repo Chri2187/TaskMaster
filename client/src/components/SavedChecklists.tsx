@@ -37,7 +37,7 @@ export default function SavedChecklists({
                   <div>
                     <h3 className="font-medium text-secondary">{checklist.title}</h3>
                     <p className="text-sm text-secondary/70">
-                      {totalItems} items ({completedItems} completed)
+                      {totalItems} items ({completedItems} completed) • {formatDate(checklist.lastModified)}
                     </p>
                   </div>
                   <div className="flex gap-2">

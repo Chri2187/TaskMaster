@@ -7,5 +7,5 @@ export interface Checklist {
   id: number;
   title: string;
   items: ChecklistItem[];
-  lastModified: number;
+  lastModified: string; // ISO timestamp format
 }
