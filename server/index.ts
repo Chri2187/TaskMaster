@@ -56,10 +56,11 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on port 5000
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = 5000;
+  // Choose the port depending on the environment
+  // Use port 3005 for Docker, 5000 for development
+  const port = process.env.PORT ? parseInt(process.env.PORT) : 
+               process.env.NODE_ENV === 'production' ? 3005 : 5000;
+  
   server.listen({
     port,
     host: "0.0.0.0",
