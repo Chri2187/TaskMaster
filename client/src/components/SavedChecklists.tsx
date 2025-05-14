@@ -15,13 +15,13 @@ export default function SavedChecklists({
   onDeleteChecklist,
 }: SavedChecklistsProps) {
   return (
-    <Card className="bg-dark-secondary rounded-lg p-6 shadow-lg border border-dark-border mt-8">
+    <Card className="bg-card rounded-lg p-6 shadow-lg border border-border mt-8">
       <CardContent className="p-0">
-        <h2 className="text-xl font-medium mb-4 text-white">Saved Checklists</h2>
+        <h2 className="text-xl font-medium mb-4 text-secondary">Saved Checklists</h2>
         
         <div className="space-y-2">
           {checklists.length === 0 ? (
-            <div className="py-3 text-center text-gray-500 italic">
+            <div className="py-3 text-center text-secondary/60 italic">
               No saved checklists. Create and save your first checklist above.
             </div>
           ) : (
@@ -32,25 +32,25 @@ export default function SavedChecklists({
               return (
                 <div
                   key={checklist.id}
-                  className="flex items-center justify-between p-3 rounded-md hover:bg-gray-800 transition-colors"
+                  className="flex items-center justify-between p-3 rounded-md hover:bg-background/50 transition-colors"
                 >
                   <div>
-                    <h3 className="font-medium text-white">{checklist.title}</h3>
-                    <p className="text-sm text-gray-400">
+                    <h3 className="font-medium text-secondary">{checklist.title}</h3>
+                    <p className="text-sm text-secondary/70">
                       {totalItems} items ({completedItems} completed)
                     </p>
                   </div>
                   <div className="flex gap-2">
                     <Button
                       variant="ghost"
-                      className="text-blue-500 hover:text-blue-400 transition-colors"
+                      className="text-accent hover:text-accent/80 transition-colors"
                       onClick={() => onLoadChecklist(index)}
                     >
                       <Edit className="h-4 w-4" />
                     </Button>
                     <Button
                       variant="ghost"
-                      className="text-red-500 hover:text-red-400 transition-colors"
+                      className="text-destructive hover:text-destructive/80 transition-colors"
                       onClick={() => onDeleteChecklist(index)}
                     >
                       <Trash className="h-4 w-4" />
