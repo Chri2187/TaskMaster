@@ -147,7 +147,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="text-center text-secondary/70 text-sm mt-8 pt-4 border-t border-primary-foreground/20">
-          <p>Checklist App - Dark Mode | {new Date().getFullYear()}</p>
+          <p>Checklist App - Dark Mode | Christian Francini</p>
         </footer>
       </div>
       <Toaster />
